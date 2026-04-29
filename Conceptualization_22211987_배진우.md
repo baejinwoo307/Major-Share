@@ -10,6 +10,7 @@
 | Revision date | Version # | Description | Author |
 | :--- | :--- | :--- | :--- |
 | 2026/03/27 | 1.00 | First draft | 배진우 |
+| 2026/04/29 | 1.01 | Use case수정 | 배진우 |
 
 ## = Contents =
 1. [Business purpose](#1-business-purpose)
@@ -82,12 +83,12 @@
 | **Description** | 들어온 예약 신청 목록을 확인하고 특정 사용자의 예약 요청을 승인하여 우선권을 부여한다. |
 
 ### 6) Auto-Succession
-| **Actor** | System |
+| **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 기존 대여자의 반납이 완료되면 승인된 차기 예약자에게 자동으로 대여 권한 및 알림을 승계한다. |
 
 ### 7) Block Extension
-| **Actor** | System |
+| **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 승인된 예약자가 존재할 경우 기존 대여자의 연장 신청 기능을 자동으로 차단한다. |
 
