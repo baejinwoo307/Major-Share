@@ -41,7 +41,7 @@
 <img width="763" height="548" alt="system diagram" src="https://github.com/user-attachments/assets/c81ee6df-f143-4763-8348-60484b2d2b5e" />
 
 
-
+* **Register :** 회원가입
 * **Login :** 로그인
 * **Register Item :** 판매/대여 물품 상세 정보 등록
 * **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
@@ -57,77 +57,95 @@
 
 ## 3. Use case list
 
-### 1) Login
+### 1) Register
+| **Actor** | Seller/Lender,Buyer/Borrower/Admin |
+| :--- | :--- |
+| **Description** | 동록되지 않은 사용자들을 회원에 등록한다. |
+
+### 2) Login
 | **Actor** | Seller/Lender,Buyer/Borrower/Admin |
 | :--- | :--- |
 | **Description** | 각자 자신의 계정으로 로그인하고 올바른 정보를 입력했다면 로그인에 성공하게 된다. |
 
-### 2) Register Item
+### 3) Register Item
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 판매 또는 대여하고자 하는 전공 자산의 상세 정보(상태, 가격, 대여 기간 등)를 시스템에 등록한다. |
 
-### 3) Request Extension
+### 4) Request Extension
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
 
-### 4) Reserve Item
+### 5) Reserve Item
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 현재 타 사용자가 이용 중인 물품에 대해 차기 대여 예약을 신청한다. |
 
-### 5) Accept Reservation
+### 6) Accept Reservation
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 들어온 예약 신청 목록을 확인하고 특정 사용자의 예약 요청을 승인하여 우선권을 부여한다. |
 
-### 6) Search & Filter
+### 7) Search & Filter
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 물품 카테고리, 거래 방식(매매/대여), 예약 가능 여부 등 필터를 적용하여 검색한다. |
 
-### 7) Request Transaction
+### 8) Request Transaction
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 특정 물품에 대해 구매 요청 또는 대여/예약 요청을 공급자에게 전송한다. |
 
-### 8) Manage Requests
+### 9) Manage Transaction Requests
 | **Actor** | Seller/Lender |
 | :--- | :--- |
-| **Description** | 본인의 물품에 들어온 거래 및 연장/예약 요청을 대시보드에서 통합 관리한다. |
+| **Description** | 본인의 물품에 들어온 신규 구매 및 대여 요청을 확인하고 승인 또는 거절한다. |
 
-### 9) Confirm Pickup/Return
+### 10) Manage Extension Requests
+| **Actor** | Seller/Lender |
+| :--- | :--- |
+| **Description** | 대여 중인 사용자의 기간 연장 신청을 확인하고 처리한다. 단, 예약자가 없을 때만 승인이 가능하다. |
+
+### 11) Confirm Pickup/Return
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 대면 거래 후 물품 수령 및 반납 완료를 상호 확인하여 시스템 상태를 업데이트한다. |
 
-### 10) Transaction Review
+### 12) Transaction Review
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 거래 종료 후 상대방의 매너 및 물품 보존 상태에 대한 별점과 후기를 기록한다. |
 
-### 11) Chat & Messaging
+### 13) Chat & Messaging
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 거래 세부 사항(직거래 시간, 장소 등)을 조율하거나 물품 상태에 대해 실시간으로 문의하고 답변한다. |
 
-### 12) System Monitoring
+### 14) System Monitoring
 | **Actor** | Admin |
 | :--- | :--- |
 | **Description** | 전체 거래 데이터를 감시하여 부정 거래나 부적절한 게시물 및 채팅을 관리한다. |
 
 ## 4. Concept of operation
 
-### 1) Login
+### 1) Register
+<table>
+  <tr><td><b>Purpose</b></td><td>등록하지 않은 사용자의 정보를 등록함</td></tr>
+  <tr><td><b>Approach</b></td><td>회원등록으로 시스템 이용을 위한 권한을 부여한다. 사용자의 필요한 정보들을 입력한 후 등록을 실행한다.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>등록되지 않은 사용자가 자신의 정보를 등록하려고 할때 작동하낟.</td></tr>
+  <tr><td><b>Goals</b></td><td>회원가입을 통해 로그인 기능을 사용할 수 있게 한다.</td></tr>
+</table>
+
+### 2) Login
 <table>
   <tr><td><b>Purpose</b></td><td>어플의 사용을 위해 등록된 계정임을 확인받아 기능들을 사용하기 위함.</td></tr>
-  <tr><td><b>Approach</b></td><td>어플 실행 시 올바른 정보를 입력했다면 로그인이 되어 기능들을 사용할 수 있게 하고, 잘못된 정보 입력 시 재입력, 아이디/비밀번호 찾기, 회원가입 등의 기능을 제공함.</td></tr>
+  <tr><td><b>Approach</b></td><td>어플 실행 시 올바른 정보를 입력했다면 로그인이 되어 기능들을 사용할 수 있게 하고, 잘못된 정보 입력 시 재입력, 회원가입 등의 기능을 제공함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>시스템 진입 후 사용자가 자신의 정보를 입력할 때 작동함.</td></tr>
   <tr><td><b>Goals</b></td><td>허위 사용자 유입 차단 및 거래 데이터의 무결성 보장.</td></tr>
 </table>
 
-### 2) Register Item
+### 3) Register Item
 <table>
   <tr><td><b>Purpose</b></td><td>사용자의 유휴 전공 자산을 시장에 공개하여 공유 경제 가치를 창출함.</td></tr>
   <tr><td><b>Approach</b></td><td>물품 사진, 상태 설명, 가격, 대여 가능 기간 등을 DB에 상세히 등록함.</td></tr>
@@ -135,7 +153,7 @@
   <tr><td><b>Goals</b></td><td>플랫폼 내 풍부한 자산 데이터베이스 확보 및 활발한 자원 공유 유도.</td></tr>
 </table>
 
-### 3) Request Extension
+### 4) Request Extension
 <table>
   <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
   <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
@@ -143,7 +161,7 @@
   <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
 </table>
 
-### 4) Reserve Item
+### 5) Reserve Item
 <table>
   <tr><td><b>Purpose</b></td><td>현재 이용 중인 인기 자산에 대해 차기 사용 권한을 미리 확보하여 대기 시간을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>예약 대기 큐(Queue)에 사용자를 등록하고 우선순위 순번을 부여함.</td></tr>
@@ -151,7 +169,7 @@
   <tr><td><b>Goals</b></td><td>자원 독점 방지 및 투명하고 공정한 예약 대기.</td></tr>
 </table>
 
-### 5) Accept Reservation
+### 6) Accept Reservation
 <table>
   <tr><td><b>Purpose</b></td><td>특정 예약자의 신뢰도를 확인하고 공급자가 최종 대여 순번을 확정함.</td></tr>
   <tr><td><b>Approach</b></td><td>공급자의 관리 대시보드에서 대기 리스트를 검토한 후 승인/거절 상태를 업데이트함.</td></tr>
@@ -159,7 +177,7 @@
   <tr><td><b>Goals</b></td><td>공급자의 자율적인 예약 관리 권한 보장.</td></tr>
 </table>
 
-### 6) Search & Filter
+### 7) Search & Filter
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 내 등록된 수많은 전공 자산 중 사용자가 원하는 물품을 신속히 탐색함.</td></tr>
   <tr><td><b>Approach</b></td><td>카테고리, 대학별 거점, 거래 방식(매매/대여), 물품 상태 등 다중 필터 검색 기능을 제공함.</td></tr>
@@ -167,23 +185,31 @@
   <tr><td><b>Goals</b></td><td>탐색 시간 단축을 통한 사용자 경험 최적화 및 거래 연결성 향상.</td></tr>
 </table>
 
-### 7) Request Transaction
+### 8) Request Transaction
 <table>
   <tr><td><b>Purpose</b></td><td>특정 물품에 대한 구매 또는 대여 의사를 공식적으로 전달하여 거래를 개시함.</td></tr>
-  <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 신청 폼을 작성하여 공급자에게 실시간 알림을 전송함.</td></tr>
+  <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 구매또는 대여 신청을 하고 해당 사실을 공급자에게 실시간 알림으로 전송함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>수요자(Buyer/Borrower)가 구매 신청 또는 대여 신청 버튼을 클릭할 때 발생함.</td></tr>
   <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
 </table>
 
-### 8) Manage Requests
+### 9) Manage Transaction Requests
 <table>
-  <tr><td><b>Purpose</b></td><td>공급자에게 들어온 수많은 매매/대여/연장 요청을 한눈에 파악하고 처리함.</td></tr>
-  <tr><td><b>Approach</b></td><td>통합 대시보드에서 각 요청의 상태를 실시간으로 확인하고 승인 여부를 결정함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>공급자가 관리 메뉴에 접속하거나 새로운 요청 알림을 클릭할 때 활성화됨.</td></tr>
-  <tr><td><b>Goals</b></td><td>거래 프로세스의 투명성 확보 및 다중 거래의 효율적 제어.</td></tr>
+  <tr><td><b>Purpose</b></td><td>공급자가 본인의 물품에 들어온 신규 구매 또는 대여 의사를 확인하고, 거래의 성사 여부를 최종 결정하기 위함.</td></tr>
+  <tr><td><b>Approach</b></td><td>통합 관리 대시보드에서 수신된 신규 거래 요청 리스트를 실시간으로 확인하고, 승인 또는 거절 버튼을 통해 처리 결과를 시스템에 반영합니다</td></tr>
+  <tr><td><b>Dynamics</b></td><td>수요자(Buyer/Borrower)가 물품 상세 페이지에서 구매 또는 대여 신청을 완료하여 공급자가 해당 요청을 승인/거절하는 시점에 활성화됩니다.</td></tr>
+  <tr><td><b>Goals</b></td><td>신속한 의사 결정을 통해 거래 매칭 성공률을 높이고 유휴 자산의 효율적인 순환을 돕습니다.</td></tr>
 </table>
 
-### 9) Confirm Pickup/Return
+### 10) Manage Transaction Requests
+<table>
+  <tr><td><b>Purpose</b></td><td>현재 대여 중인 물품의 기간 연장 요청을 검토하여, 자원 독점 방지와 사용자 편의성 사이의 균형을 유지하기 위함입니다</td></tr>
+  <tr><td><b>Approach</b></td><td>시스템이 Reservation Queue를 조회하여 차기 예약자가 없는 경우에 한해 공급자가 연장 요청을 최종 승인하며, 대여 종료일 및 상태를 업데이트합니다</td></tr>
+  <tr><td><b>Dynamics</b></td><td>기존 대여자가 대여 기간 만료 전 연장 신청을 보내고 공급자가 해당 요청을 클릭할 때 트리거됩니다</td></tr>
+  <tr><td><b>Goals</b></td><td>대여한 물품에 대한 기간연장을 통해 자원의 활용성을 높인다.</td></tr>
+</table>
+
+### 11) Confirm Pickup/Return
 <table>
   <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함.</td></tr>
   <tr><td><b>Approach</b></td><td>상호 확정 버튼 클릭 혹은 디지털 인증 수단을 통해 대면 거래 완료를 증명함.</td></tr>
@@ -191,7 +217,7 @@
   <tr><td><b>Goals</b></td><td>거래 데이터 정합성 유지 및 물품 소유권/사용권의 명확한 이전 기록.</td></tr>
 </table>
 
-### 10) Transaction Review
+### 12) Transaction Review
 <table>
   <tr><td><b>Purpose</b></td><td>거래 경험을 공개하여 사용자 간의 신뢰도를 높이고 커뮤니티 신뢰성을 유지함.</td></tr>
   <tr><td><b>Approach</b></td><td>거래 종료 후 상대방의 매너 및 자산 보존 상태를 별점과 후기로 기록함.</td></tr>
@@ -199,7 +225,7 @@
   <tr><td><b>Goals</b></td><td>불량 사용자 필터링 및 건강한 캠퍼스 공유 문화 정착.</td></tr>
 </table>
 
-### 11) Chat & Messaging
+### 13) Chat & Messaging
 <table>
   <tr><td><b>Purpose</b></td><td>개인 연락처 노출 없이 안전하게 거래 세부 사항을 조율하고, 물품에 대한 추가 정보를 교환하여 거래 성사율을 높임.</td></tr>
   <tr><td><b>Approach</b></td><td>게시물에 있는 채팅버튼을 활성화 시에 1:1 실시간 채팅 인터페이스를 통해 텍스트 및 이미지 데이터를 주고받음.</td></tr>
@@ -207,7 +233,7 @@
   <tr><td><b>Goals</b></td><td>플랫폼 내 사용자끼리의 커뮤니케이션 채널 확보.</td></tr>
 </table>
 
-### 12) System Monitoring
+### 14) System Monitoring
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 전체의 안정성을 유지하고 부정 거래나 부적절한 게시물을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>관리자 전용 대시보드를 통해 시스템 로그 및 거래 데이터를 감시함.</td></tr>
