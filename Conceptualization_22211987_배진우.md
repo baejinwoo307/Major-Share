@@ -159,23 +159,7 @@
   <tr><td><b>Goals</b></td><td>공급자의 자율적인 예약 관리 권한 보장.</td></tr>
 </table>
 
-### 6) Auto-Succession
-<table>
-  <tr><td><b>Purpose</b></td><td>물품 반납 즉시 차기 예약자에게 권한을 넘겨 자산의 유휴 시간을 최소화함.</td></tr>
-  <tr><td><b>Approach</b></td><td>시스템 트리거를 통해 1순위 예약자에게 즉시 알림을 발송하고 이용 권한을 자동 부여함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>기존 대여자의 반납 확인 이벤트 발생 시 시스템이 자동으로 실행함.</td></tr>
-  <tr><td><b>Goals</b></td><td>전공 자산의 선순환 속도 증가 및 효율적인 자원 배분 실현.</td></tr>
-</table>
-
-### 7) Block Extension
-<table>
-  <tr><td><b>Purpose</b></td><td>예약 대기자의 권리를 보장하고 특정 유저의 무분별한 독점을 방지함.</td></tr>
-  <tr><td><b>Approach</b></td><td>예약 큐에 승인된 대기자가 존재할 경우, 기존 대여자의 연장 UI를 시스템이 비활성화 시킴.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>물품에 대해 새로운 예약이 승인되는 즉시 해당 물품의 제어 로직에 반영됨.</td></tr>
-  <tr><td><b>Goals</b></td><td>자원 공유의 공정성 실현 및 자원 독점 방지.</td></tr>
-</table>
-
-### 8) Search & Filter
+### 6) Search & Filter
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 내 등록된 수많은 전공 자산 중 사용자가 원하는 물품을 신속히 탐색함.</td></tr>
   <tr><td><b>Approach</b></td><td>카테고리, 대학별 거점, 거래 방식(매매/대여), 물품 상태 등 다중 필터 검색 기능을 제공함.</td></tr>
@@ -183,7 +167,7 @@
   <tr><td><b>Goals</b></td><td>탐색 시간 단축을 통한 사용자 경험 최적화 및 거래 연결성 향상.</td></tr>
 </table>
 
-### 9) Request Transaction
+### 7) Request Transaction
 <table>
   <tr><td><b>Purpose</b></td><td>특정 물품에 대한 구매 또는 대여 의사를 공식적으로 전달하여 거래를 개시함.</td></tr>
   <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 신청 폼을 작성하여 공급자에게 실시간 알림을 전송함.</td></tr>
@@ -191,7 +175,7 @@
   <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
 </table>
 
-### 10) Manage Requests
+### 8) Manage Requests
 <table>
   <tr><td><b>Purpose</b></td><td>공급자에게 들어온 수많은 매매/대여/연장 요청을 한눈에 파악하고 처리함.</td></tr>
   <tr><td><b>Approach</b></td><td>통합 대시보드에서 각 요청의 상태를 실시간으로 확인하고 승인 여부를 결정함.</td></tr>
@@ -199,7 +183,7 @@
   <tr><td><b>Goals</b></td><td>거래 프로세스의 투명성 확보 및 다중 거래의 효율적 제어.</td></tr>
 </table>
 
-### 11) Confirm Pickup/Return
+### 9) Confirm Pickup/Return
 <table>
   <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함.</td></tr>
   <tr><td><b>Approach</b></td><td>상호 확정 버튼 클릭 혹은 디지털 인증 수단을 통해 대면 거래 완료를 증명함.</td></tr>
@@ -207,7 +191,7 @@
   <tr><td><b>Goals</b></td><td>거래 데이터 정합성 유지 및 물품 소유권/사용권의 명확한 이전 기록.</td></tr>
 </table>
 
-### 12) Transaction Review
+### 10) Transaction Review
 <table>
   <tr><td><b>Purpose</b></td><td>거래 경험을 공개하여 사용자 간의 신뢰도를 높이고 커뮤니티 신뢰성을 유지함.</td></tr>
   <tr><td><b>Approach</b></td><td>거래 종료 후 상대방의 매너 및 자산 보존 상태를 별점과 후기로 기록함.</td></tr>
@@ -215,7 +199,7 @@
   <tr><td><b>Goals</b></td><td>불량 사용자 필터링 및 건강한 캠퍼스 공유 문화 정착.</td></tr>
 </table>
 
-### 13) Chat & Messaging
+### 11) Chat & Messaging
 <table>
   <tr><td><b>Purpose</b></td><td>개인 연락처 노출 없이 안전하게 거래 세부 사항을 조율하고, 물품에 대한 추가 정보를 교환하여 거래 성사율을 높임.</td></tr>
   <tr><td><b>Approach</b></td><td>게시물에 있는 채팅버튼을 활성화 시에 1:1 실시간 채팅 인터페이스를 통해 텍스트 및 이미지 데이터를 주고받음.</td></tr>
@@ -223,7 +207,7 @@
   <tr><td><b>Goals</b></td><td>플랫폼 내 사용자끼리의 커뮤니케이션 채널 확보.</td></tr>
 </table>
 
-### 14) System Monitoring
+### 12) System Monitoring
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 전체의 안정성을 유지하고 부정 거래나 부적절한 게시물을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>관리자 전용 대시보드를 통해 시스템 로그 및 거래 데이터를 감시함.</td></tr>
