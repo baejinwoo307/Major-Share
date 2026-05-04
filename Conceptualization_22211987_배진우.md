@@ -49,7 +49,8 @@
 * **Accept Reservation :** 들어온 예약 신청 확인 및 승인 또는 거절
 * **Search & Filter :** 카테고리 및 거래 방식별 물품 검색 요청
 * **Request Transaction :** 매매 구매 또는 대여/예약 신청 전송
-* **Manage Requests :** 공급자의 거래/연장/예약 요청 승인 및 거절
+* **Manage Transaction Requests :** 공급자의 거래/예약 요청 승인 및 거절
+* **Manage Extension Requests :** 공급자의 예약연장 요청 승인 및 거절
 * **Confirm Pickup/Return :** 물품 수령 및 반납 상호 인증
 * **Transaction Review :** 거래 종료 후 물품 상태 및 유저 매너 평가 기록
 * **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변한다
