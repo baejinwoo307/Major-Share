@@ -53,7 +53,7 @@
 * **Manage Reservation Requests :** 공급자가 예약 요청 승인 및 거절
 * **Confirm Pickup/Return :** 물품 수령 및 반납 상호 인증
 * **Transaction Review :** 거래 종료 후 물품 상태 및 유저 매너 평가 기록
-* **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변한다
+* **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변
 * **System Monitoring :** 시스템 로그 및 이상 거래 데이터 모니터링
 
 ## 3. Use case list
@@ -191,7 +191,7 @@
   <tr><td><b>Purpose</b></td><td>공급자가 본인의 물품에 들어온 신규 구매 또는 대여 의사를 확인하고, 거래의 성사 여부를 최종 결정하기 위함.</td></tr>
   <tr><td><b>Approach</b></td><td>통합 관리 대시보드에서 수신된 신규 거래 요청 리스트를 실시간으로 확인하고, 승인 또는 거절 버튼을 통해 처리 결과를 시스템에 반영함</td></tr>
   <tr><td><b>Dynamics</b></td><td>수요자의 거래 요청이 발생한 후, 공급자가 관리 대시보드에 접속하거나 요청 알림을 클릭할 때 트리거됨.</td></tr>
-  <tr><td><b>Goals</b></td><td>신속한 의사 결정을 통해 거래 매칭 성공률을 높이고 유휴 자산의 효율적인 순환을 돕습니다.</td></tr>
+  <tr><td><b>Goals</b></td><td>신속한 의사 결정을 통해 거래 매칭 성공률을 높이고 유휴 자산의 효율적인 순환을 돕는다.</td></tr>
 </table>
 
 ### 9) Manage Extension Requests
@@ -212,7 +212,7 @@
 
 ### 11) Confirm Pickup/Return
 <table>
-  <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함.이후 해당 물품에 예약자가 있다면 Auto-Succession을 통해서 예약자에게 해당 물품이 대여된다.</td></tr>
+  <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함. 이후 해당 물품에 예약자가 있다면 Auto-Succession을 통해서 예약자에게 해당 물품이 대여된다.</td></tr>
   <tr><td><b>Approach</b></td><td>상호 확정 버튼 클릭 혹은 디지털 인증 수단을 통해 대면 거래 완료를 증명함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>물리적인 물품 전달 또는 반납이 이루어지는 현장에서 트리거됨.</td></tr>
   <tr><td><b>Goals</b></td><td>거래 데이터 정합성 유지 및 물품 소유권/사용권의 명확한 이전 기록.</td></tr>
