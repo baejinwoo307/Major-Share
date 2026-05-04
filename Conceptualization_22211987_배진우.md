@@ -44,13 +44,13 @@
 * **Register :** 회원가입
 * **Login :** 로그인
 * **Register Item :** 판매/대여 물품 상세 정보 등록
+* **Search & Filter :** 카테고리 및 거래 방식별 물품 검색 요청
 * **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
 * **Reserve Item :** 대여 중인 물품에 대한 차기 대기 예약 신청
-* **Accept Reservation :** 들어온 예약 신청 확인 및 승인 또는 거절
-* **Search & Filter :** 카테고리 및 거래 방식별 물품 검색 요청
-* **Request Transaction :** 매매 구매 또는 대여/예약 신청 전송
-* **Manage Transaction Requests :** 공급자의 거래/예약 요청 승인 및 거절
-* **Manage Extension Requests :** 공급자의 예약연장 요청 승인 및 거절
+* **Request Transaction :** 구매/대여 신청 전송
+* **Manage Transaction Requests :** 공급자가 구매/대여 요청 승인 및 거절
+* **Manage Extension Requests :** 공급자가 대여기간연장 요청 승인 및 거절
+* **Manage Reservation Requests :** 공급자가 예약 요청 승인 및 거절
 * **Confirm Pickup/Return :** 물품 수령 및 반납 상호 인증
 * **Transaction Review :** 거래 종료 후 물품 상태 및 유저 매너 평가 기록
 * **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변한다
@@ -61,7 +61,7 @@
 ### 1) Register
 | **Actor** | Seller/Lender,Buyer/Borrower/Admin |
 | :--- | :--- |
-| **Description** | 동록되지 않은 사용자들을 회원에 등록한다. |
+| **Description** | 등록되지 않은 사용자들을 회원에 등록한다. |
 
 ### 2) Login
 | **Actor** | Seller/Lender,Buyer/Borrower/Admin |
@@ -73,40 +73,40 @@
 | :--- | :--- |
 | **Description** | 판매 또는 대여하고자 하는 전공 자산의 상세 정보(상태, 가격, 대여 기간 등)를 시스템에 등록한다. |
 
-### 4) Request Extension
-| **Actor** | Buyer/Borrower |
-| :--- | :--- |
-| **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
-
-### 5) Reserve Item
-| **Actor** | Buyer/Borrower |
-| :--- | :--- |
-| **Description** | 현재 타 사용자가 이용 중인 물품에 대해 차기 대여 예약을 신청한다. |
-
-### 6) Accept Reservation
-| **Actor** | Seller/Lender |
-| :--- | :--- |
-| **Description** | 들어온 예약 신청 목록을 확인하고 특정 사용자의 예약 요청을 승인하여 우선권을 부여한다. |
-
-### 7) Search & Filter
+### 4) Search & Filter
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 물품 카테고리, 거래 방식(매매/대여), 예약 가능 여부 등 필터를 적용하여 검색한다. |
 
-### 8) Request Transaction
+### 5) Request Extension
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
-| **Description** | 특정 물품에 대해 구매 요청 또는 대여/예약 요청을 공급자에게 전송한다. |
+| **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
 
-### 9) Manage Transaction Requests
+### 6) Reserve Item
+| **Actor** | Buyer/Borrower |
+| :--- | :--- |
+| **Description** | 현재 타 사용자가 이용 중인 물품에 대해 차기 대여 예약을 신청한다. |
+
+### 7) Request Transaction
+| **Actor** | Buyer/Borrower |
+| :--- | :--- |
+| **Description** | 특정 물품에 대해 구매 요청 또는 대여 요청을 공급자에게 전송한다. |
+
+### 8) Manage Transaction Requests
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 본인의 물품에 들어온 신규 구매 및 대여 요청을 확인하고 승인 또는 거절한다. |
 
-### 10) Manage Extension Requests
+### 9) Manage Extension Requests
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 대여 중인 사용자의 기간 연장 신청을 확인하고 처리한다. 단, 예약자가 없을 때만 승인이 가능하다. |
+
+### 10) Manage Reservation Requests
+| **Actor** | Seller/Lender |
+| :--- | :--- |
+| **Description** | 대여중인 물품에 대한 예약신청을 확인하고 처리한다.|
 
 ### 11) Confirm Pickup/Return
 | **Actor** | Seller/Lender, Buyer/Borrower |
@@ -154,31 +154,7 @@
   <tr><td><b>Goals</b></td><td>플랫폼 내 풍부한 자산 데이터베이스 확보 및 활발한 자원 공유 유도.</td></tr>
 </table>
 
-### 4) Request Extension
-<table>
-  <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
-  <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>대여 종료일 전, 사용자가 연장 버튼을 클릭할 때 트리거됨.</td></tr>
-  <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
-</table>
-
-### 5) Reserve Item
-<table>
-  <tr><td><b>Purpose</b></td><td>현재 이용 중인 인기 자산에 대해 차기 사용 권한을 미리 확보하여 대기 시간을 관리함.</td></tr>
-  <tr><td><b>Approach</b></td><td>예약 대기 큐(Queue)에 사용자를 등록하고 우선순위 순번을 부여함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>물품 상태가 대여 중일 때 수요자가 예약 신청 버튼을 클릭하면 작동함.</td></tr>
-  <tr><td><b>Goals</b></td><td>자원 독점 방지 및 투명하고 공정한 예약 대기.</td></tr>
-</table>
-
-### 6) Accept Reservation
-<table>
-  <tr><td><b>Purpose</b></td><td>특정 예약자의 신뢰도를 확인하고 공급자가 최종 대여 순번을 확정함.</td></tr>
-  <tr><td><b>Approach</b></td><td>공급자의 관리 대시보드에서 대기 리스트를 검토한 후 승인/거절 상태를 업데이트함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>수요자의 예약 신청 이벤트 이후 공급자가 승인 버튼을 누르는 시점에 발생함.</td></tr>
-  <tr><td><b>Goals</b></td><td>공급자의 자율적인 예약 관리 권한 보장.</td></tr>
-</table>
-
-### 7) Search & Filter
+### 4) Search & Filter
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 내 등록된 수많은 전공 자산 중 사용자가 원하는 물품을 신속히 탐색함.</td></tr>
   <tr><td><b>Approach</b></td><td>카테고리, 대학별 거점, 거래 방식(매매/대여), 물품 상태 등 다중 필터 검색 기능을 제공함.</td></tr>
@@ -186,7 +162,23 @@
   <tr><td><b>Goals</b></td><td>탐색 시간 단축을 통한 사용자 경험 최적화 및 거래 연결성 향상.</td></tr>
 </table>
 
-### 8) Request Transaction
+### 5) Request Extension
+<table>
+  <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
+  <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>대여 종료일 전, 사용자가 연장 버튼을 클릭할 때 트리거됨.</td></tr>
+  <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
+</table>
+
+### 6) Reserve Item
+<table>
+  <tr><td><b>Purpose</b></td><td>현재 이용 중인 인기 자산에 대해 차기 사용 권한을 미리 확보하여 대기 시간을 관리함.</td></tr>
+  <tr><td><b>Approach</b></td><td>예약 대기 큐(Queue)에 사용자를 등록하고 우선순위 순번을 부여함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>물품 상태가 대여 중일 때 수요자가 예약 신청 버튼을 클릭하면 작동함.</td></tr>
+  <tr><td><b>Goals</b></td><td>자원 독점 방지 및 투명하고 공정한 예약 대기.</td></tr>
+</table>
+
+### 7) Request Transaction
 <table>
   <tr><td><b>Purpose</b></td><td>특정 물품에 대한 구매 또는 대여 의사를 공식적으로 전달하여 거래를 개시함.</td></tr>
   <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 구매또는 대여 신청을 하고 해당 사실을 공급자에게 실시간 알림으로 전송함.</td></tr>
@@ -194,25 +186,33 @@
   <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
 </table>
 
-### 9) Manage Transaction Requests
+### 8) Manage Transaction Requests
 <table>
   <tr><td><b>Purpose</b></td><td>공급자가 본인의 물품에 들어온 신규 구매 또는 대여 의사를 확인하고, 거래의 성사 여부를 최종 결정하기 위함.</td></tr>
-  <tr><td><b>Approach</b></td><td>통합 관리 대시보드에서 수신된 신규 거래 요청 리스트를 실시간으로 확인하고, 승인 또는 거절 버튼을 통해 처리 결과를 시스템에 반영합니다</td></tr>
-  <tr><td><b>Dynamics</b></td><td>수요자(Buyer/Borrower)가 물품 상세 페이지에서 구매 또는 대여 신청을 완료하여 공급자가 해당 요청을 승인/거절하는 시점에 활성화됩니다.</td></tr>
+  <tr><td><b>Approach</b></td><td>통합 관리 대시보드에서 수신된 신규 거래 요청 리스트를 실시간으로 확인하고, 승인 또는 거절 버튼을 통해 처리 결과를 시스템에 반영함</td></tr>
+  <tr><td><b>Dynamics</b></td><td>수요자의 거래 요청이 발생한 후, 공급자가 관리 대시보드에 접속하거나 요청 알림을 클릭할 때 트리거됨.</td></tr>
   <tr><td><b>Goals</b></td><td>신속한 의사 결정을 통해 거래 매칭 성공률을 높이고 유휴 자산의 효율적인 순환을 돕습니다.</td></tr>
 </table>
 
-### 10) Manage Extension Requests
+### 9) Manage Extension Requests
 <table>
-  <tr><td><b>Purpose</b></td><td>현재 대여 중인 물품의 기간 연장 요청을 검토하여, 자원 독점 방지와 사용자 편의성 사이의 균형을 유지하기 위함입니다</td></tr>
-  <tr><td><b>Approach</b></td><td>시스템이 Reservation Queue를 조회하여 차기 예약자가 없는 경우에 한해 공급자가 연장 요청을 최종 승인하며, 대여 종료일 및 상태를 업데이트합니다</td></tr>
-  <tr><td><b>Dynamics</b></td><td>기존 대여자가 대여 기간 만료 전 연장 신청을 보내고 공급자가 해당 요청을 클릭할 때 트리거됩니다</td></tr>
+  <tr><td><b>Purpose</b></td><td>현재 대여 중인 물품의 기간 연장 요청을 검토하여, 자원 독점 방지와 사용자 편의성 사이의 균형을 유지하기 위함.</td></tr>
+  <tr><td><b>Approach</b></td><td>시스템이 Reservation Queue를 조회하여 차기 예약자가 없는 경우에 한해 공급자가 연장 요청을 최종 승인하며, 대여 종료일 및 상태를 업데이트함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>대여자가 연장 신청을 완료한 후, 공급자가 연장 요청 목록을 확인할 때 발생함.</td></tr>
   <tr><td><b>Goals</b></td><td>대여한 물품에 대한 기간연장을 통해 자원의 활용성을 높인다.</td></tr>
+</table>
+
+### 10) Manage Reservation Requests
+<table>
+  <tr><td><b>Purpose</b></td><td>특정 예약자의 신뢰도를 확인하고 공급자가 예약 순번을 확정함.</td></tr>
+  <tr><td><b>Approach</b></td><td>공급자의 관리 대시보드에서 대기 리스트를 검토한 후 승인/거절 상태를 업데이트함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>수요자의 예약 신청 이벤트 이후 공급자가 승인 버튼을 누르는 시점에 발생함.</td></tr>
+  <tr><td><b>Goals</b></td><td>공급자의 자율적인 예약 관리 권한 보장.</td></tr>
 </table>
 
 ### 11) Confirm Pickup/Return
 <table>
-  <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함.</td></tr>
+  <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함.이후 해당 물품에 예약자가 있다면 Auto-Succession을 통해서 예약자에게 해당 물품이 대여된다.</td></tr>
   <tr><td><b>Approach</b></td><td>상호 확정 버튼 클릭 혹은 디지털 인증 수단을 통해 대면 거래 완료를 증명함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>물리적인 물품 전달 또는 반납이 이루어지는 현장에서 트리거됨.</td></tr>
   <tr><td><b>Goals</b></td><td>거래 데이터 정합성 유지 및 물품 소유권/사용권의 명확한 이전 기록.</td></tr>
