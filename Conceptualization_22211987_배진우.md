@@ -45,9 +45,9 @@
 * **Login :** 로그인
 * **Register Item :** 판매/대여 물품 상세 정보 등록
 * **Search & Filter :** 카테고리 및 거래 방식별 물품 검색 요청
-* **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
-* **Reserve Item :** 대여 중인 물품에 대한 차기 대기 예약 신청
 * **Request Transaction :** 구매/대여 신청 전송
+* **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
+* **Request Reservation :** 대여 중인 물품에 대한 차기 대기 예약 신청
 * **Manage Transaction Requests :** 공급자가 구매/대여 요청 승인 및 거절
 * **Manage Extension Requests :** 공급자가 대여기간연장 요청 승인 및 거절
 * **Manage Reservation Requests :** 공급자가 예약 요청 승인 및 거절
@@ -78,20 +78,20 @@
 | :--- | :--- |
 | **Description** | 물품 카테고리, 거래 방식(매매/대여), 예약 가능 여부 등 필터를 적용하여 검색한다. |
 
-### 5) Request Extension
+### 5) Request Transaction
+| **Actor** | Buyer/Borrower |
+| :--- | :--- |
+| **Description** | 특정 물품에 대해 구매 요청 또는 대여 요청을 공급자에게 전송한다. |
+
+### 6) Request Extension
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
 
-### 6) Reserve Item
+### 7) Request Reservation
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 현재 타 사용자가 이용 중인 물품에 대해 차기 대여 예약을 신청한다. |
-
-### 7) Request Transaction
-| **Actor** | Buyer/Borrower |
-| :--- | :--- |
-| **Description** | 특정 물품에 대해 구매 요청 또는 대여 요청을 공급자에게 전송한다. |
 
 ### 8) Manage Transaction Requests
 | **Actor** | Seller/Lender |
@@ -162,7 +162,15 @@
   <tr><td><b>Goals</b></td><td>탐색 시간 단축을 통한 사용자 경험 최적화 및 거래 연결성 향상.</td></tr>
 </table>
 
-### 5) Request Extension
+### 5) Request Transaction
+<table>
+  <tr><td><b>Purpose</b></td><td>특정 물품에 대한 구매 또는 대여 의사를 공식적으로 전달하여 거래를 개시함.</td></tr>
+  <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 구매또는 대여 신청을 하고 해당 사실을 공급자에게 실시간 알림으로 전송함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>수요자(Buyer/Borrower)가 구매 신청 또는 대여 신청 버튼을 클릭할 때 발생함.</td></tr>
+  <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
+</table>
+
+### 6) Request Extension
 <table>
   <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
   <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
@@ -170,20 +178,12 @@
   <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
 </table>
 
-### 6) Reserve Item
+### 7) Request Reservation
 <table>
   <tr><td><b>Purpose</b></td><td>현재 이용 중인 인기 자산에 대해 차기 사용 권한을 미리 확보하여 대기 시간을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>예약 대기 큐(Queue)에 사용자를 등록하고 우선순위 순번을 부여함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>물품 상태가 대여 중일 때 수요자가 예약 신청 버튼을 클릭하면 작동함.</td></tr>
   <tr><td><b>Goals</b></td><td>자원 독점 방지 및 투명하고 공정한 예약 대기.</td></tr>
-</table>
-
-### 7) Request Transaction
-<table>
-  <tr><td><b>Purpose</b></td><td>특정 물품에 대한 구매 또는 대여 의사를 공식적으로 전달하여 거래를 개시함.</td></tr>
-  <tr><td><b>Approach</b></td><td>물품 상세 페이지에서 구매또는 대여 신청을 하고 해당 사실을 공급자에게 실시간 알림으로 전송함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>수요자(Buyer/Borrower)가 구매 신청 또는 대여 신청 버튼을 클릭할 때 발생함.</td></tr>
-  <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
 </table>
 
 ### 8) Manage Transaction Requests
