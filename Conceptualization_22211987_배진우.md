@@ -46,11 +46,11 @@
 * **Register Item :** 판매/대여 물품 상세 정보 등록
 * **Search & Filter :** 카테고리 및 거래 방식별 물품 검색 요청
 * **Request Transaction :** 구매/대여 신청 전송
-* **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
 * **Request Reservation :** 대여 중인 물품에 대한 차기 대기 예약 신청
+* **Request Extension :** 대여 중인 물품의 반납 기한 연장 신청
 * **Manage Transaction Requests :** 공급자가 구매/대여 요청 승인 및 거절
-* **Manage Extension Requests :** 공급자가 대여기간연장 요청 승인 및 거절
 * **Manage Reservation Requests :** 공급자가 예약 요청 승인 및 거절
+* **Manage Extension Requests :** 공급자가 대여기간연장 요청 승인 및 거절
 * **Confirm Pickup/Return :** 물품 수령 및 반납 상호 인증
 * **Transaction Review :** 거래 종료 후 물품 상태 및 유저 매너 평가 기록
 * **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변
@@ -83,30 +83,30 @@
 | :--- | :--- |
 | **Description** | 특정 물품에 대해 구매 요청 또는 대여 요청을 공급자에게 전송한다. |
 
-### 6) Request Extension
-| **Actor** | Buyer/Borrower |
-| :--- | :--- |
-| **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
-
-### 7) Request Reservation
+### 6) Request Reservation
 | **Actor** | Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 현재 타 사용자가 이용 중인 물품에 대해 차기 대여 예약을 신청한다. |
+
+### 7) Request Extension
+| **Actor** | Buyer/Borrower |
+| :--- | :--- |
+| **Description** | 대여 중인 물품의 기간 연장을 신청한다. 단, 예약 대기자가 없을 때만 시스템에 의해 활성화된다. |
 
 ### 8) Manage Transaction Requests
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 본인의 물품에 들어온 신규 구매 및 대여 요청을 확인하고 승인 또는 거절한다. |
 
-### 9) Manage Extension Requests
-| **Actor** | Seller/Lender |
-| :--- | :--- |
-| **Description** | 대여 중인 사용자의 기간 연장 신청을 확인하고 처리한다. 단, 예약자가 없을 때만 승인이 가능하다. |
-
-### 10) Manage Reservation Requests
+### 9) Manage Reservation Requests
 | **Actor** | Seller/Lender |
 | :--- | :--- |
 | **Description** | 대여중인 물품에 대한 예약신청을 확인하고 처리한다.|
+
+### 10) Manage Extension Requests
+| **Actor** | Seller/Lender |
+| :--- | :--- |
+| **Description** | 대여 중인 사용자의 기간 연장 신청을 확인하고 처리한다. 단, 예약자가 없을 때만 승인이 가능하다. |
 
 ### 11) Confirm Pickup/Return
 | **Actor** | Seller/Lender, Buyer/Borrower |
@@ -170,20 +170,20 @@
   <tr><td><b>Goals</b></td><td>거래 매칭 성공 및 명확한 거래 의사소통 지원.</td></tr>
 </table>
 
-### 6) Request Extension
-<table>
-  <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
-  <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>대여 종료일 전, 사용자가 연장 버튼을 클릭할 때 트리거됨.</td></tr>
-  <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
-</table>
-
-### 7) Request Reservation
+### 6) Request Reservation
 <table>
   <tr><td><b>Purpose</b></td><td>현재 이용 중인 인기 자산에 대해 차기 사용 권한을 미리 확보하여 대기 시간을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>예약 대기 큐(Queue)에 사용자를 등록하고 우선순위 순번을 부여함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>물품 상태가 대여 중일 때 수요자가 예약 신청 버튼을 클릭하면 작동함.</td></tr>
   <tr><td><b>Goals</b></td><td>자원 독점 방지 및 투명하고 공정한 예약 대기.</td></tr>
+</table>
+
+### 7) Request Extension
+<table>
+  <tr><td><b>Purpose</b></td><td>대여 중인 물품의 사용 기간을 연장하여 사용자의 학습 편의를 도모함.</td></tr>
+  <tr><td><b>Approach</b></td><td>대여 현황 페이지에서 연장을 신청하며, 차기 예약자 유무를 시스템이 판단함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>대여 종료일 전, 사용자가 연장 버튼을 클릭할 때 트리거됨.</td></tr>
+  <tr><td><b>Goals</b></td><td>유연한 대여 정책 제공을 통한 사용자 만족도 및 자원 활용도 제고.</td></tr>
 </table>
 
 ### 8) Manage Transaction Requests
@@ -194,20 +194,20 @@
   <tr><td><b>Goals</b></td><td>신속한 의사 결정을 통해 거래 매칭 성공률을 높이고 유휴 자산의 효율적인 순환을 돕는다.</td></tr>
 </table>
 
-### 9) Manage Extension Requests
-<table>
-  <tr><td><b>Purpose</b></td><td>현재 대여 중인 물품의 기간 연장 요청을 검토하여, 자원 독점 방지와 사용자 편의성 사이의 균형을 유지하기 위함.</td></tr>
-  <tr><td><b>Approach</b></td><td>시스템이 Reservation Queue를 조회하여 차기 예약자가 없는 경우에 한해 공급자가 연장 요청을 최종 승인하며, 대여 종료일 및 상태를 업데이트함.</td></tr>
-  <tr><td><b>Dynamics</b></td><td>대여자가 연장 신청을 완료한 후, 공급자가 연장 요청 목록을 확인할 때 발생함.</td></tr>
-  <tr><td><b>Goals</b></td><td>대여한 물품에 대한 기간연장을 통해 자원의 활용성을 높인다.</td></tr>
-</table>
-
-### 10) Manage Reservation Requests
+### 9) Manage Reservation Requests
 <table>
   <tr><td><b>Purpose</b></td><td>특정 예약자의 신뢰도를 확인하고 공급자가 예약 순번을 확정함.</td></tr>
   <tr><td><b>Approach</b></td><td>공급자의 관리 대시보드에서 대기 리스트를 검토한 후 승인/거절 상태를 업데이트함.</td></tr>
   <tr><td><b>Dynamics</b></td><td>수요자의 예약 신청 이벤트 이후 공급자가 승인 버튼을 누르는 시점에 발생함.</td></tr>
   <tr><td><b>Goals</b></td><td>공급자의 자율적인 예약 관리 권한 보장.</td></tr>
+</table>
+
+### 10) Manage Extension Requests
+<table>
+  <tr><td><b>Purpose</b></td><td>현재 대여 중인 물품의 기간 연장 요청을 검토하여, 자원 독점 방지와 사용자 편의성 사이의 균형을 유지하기 위함.</td></tr>
+  <tr><td><b>Approach</b></td><td>시스템이 Reservation Queue를 조회하여 차기 예약자가 없는 경우에 한해 공급자가 연장 요청을 최종 승인하며, 대여 종료일 및 상태를 업데이트함.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>대여자가 연장 신청을 완료한 후, 공급자가 연장 요청 목록을 확인할 때 발생함.</td></tr>
+  <tr><td><b>Goals</b></td><td>대여한 물품에 대한 기간연장을 통해 자원의 활용성을 높인다.</td></tr>
 </table>
 
 ### 11) Confirm Pickup/Return
