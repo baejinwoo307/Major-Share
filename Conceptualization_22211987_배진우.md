@@ -38,7 +38,8 @@
 
 ## 2. System context diagram
 
-<img width="763" height="548" alt="system diagram" src="https://github.com/user-attachments/assets/c81ee6df-f143-4763-8348-60484b2d2b5e" />
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/c57982a6-74ae-4a20-912a-2cd79ea5957b" />
+
 
 
 * **Register :** 회원가입
