@@ -10,16 +10,16 @@
 | Revision date | Version # | Description | Author |
 | :--- | :--- | :--- | :--- |
 | 2026/03/27 | 1.00 | First draft | 배진우 |
-| 2026/05/04 | 1.01 | Use case수정 | 배진우 |
+| 2026/05/08 | 1.01 | Use case,glossary 수정 | 배진우 |
 
 ## = Contents =
-1. [Business purpose](#1-business-purpose)
-2. [System context diagram](#2-system-context-diagram)
-3. [Use case list](#3-use-case-list)
-4. [Concept of operation](#4-concept-of-operation)
-5. [Problem statement](#5-problem-statement)
-6. [Glossary](#6-glossary)
-7. [References](#7-references)
+1. [Business purpose]
+2. [System context diagram]
+3. [Use case list]
+4. [Concept of operation]
+5. [Problem statement]
+6. [Glossary]
+7. [References]
 
 ---
 
@@ -289,11 +289,13 @@
 | 용어 (Term) | 정의 (Definition) |
 | :--- | :--- |
 | **Major Share** | 대학 전공 서적 및 기자재의 선순환을 목표로 하는 대학생 전용 매매/대여 통합 플랫폼의 명칭이다. |
-| **Lender / Borrower** | 자산을 공급하는 대여자(공급자)와 자산을 필요로 하는 차용자(수요자)를 의미하며, 모든 대학생 사용자는 두 역할을 동시에 수행할 수 있다. |
+| **Seller / Lender** | 물품의 소유권을 판매하거나 일시적으로 대여해 주는 '공급자' 역할을 수행하는 액터(Actor)입니다. |
+| **Buyer / Borrower** | 물품을 구매하거나 일정 기간 대여하여 사용하는 '수요자' 역할을 수행하는 액터(Actor)입니다 |
 | **Reservation Queue** | 특정 인기 물품에 대해 대기 중인 예약자들의 순번과 우선순위를 관리하는 시스템 내 데이터 구조이다. |
 | **Auto-Succession** | 기존 대여자의 반납이 확인되는 즉시, 시스템 트리거에 의해 차기 예약자에게 대여 권한이 자동으로 이전되는 로직이다. |
 | **Block Extension** | 예약 대기자가 존재할 경우, 자원 독점을 방지하기 위해 시스템이 기존 대여자의 연장 신청 기능을 강제로 비활성화하는 제어 기능이다. |
 | **Concurrency Control** | 다수의 사용자가 동시에 예약이나 거래를 신청할 때, 데이터의 충돌 없이 정확한 순서를 보장하기 위한 백엔드 처리 기술이다. |
+| **Race Condition** | 학기 초나 시험 기간 등 트래픽이 집중되는 시기에 여러 사용자가 동일한 물품에 대해 동시에 예약이나 연장을 신청할 때 발생할 수 있는 데이터 충돌 현상입니다. |
 | **P2P (Peer-to-Peer)** | 중개인 없이 개인과 개인 간에 직접 물품을 거래하거나 대여하는 방식을 의미한다. |
 
 ## 7. References
