@@ -51,6 +51,7 @@
 * **Manage Transaction Requests :** 공급자가 구매/대여 요청 승인 및 거절
 * **Manage Reservation Requests :** 공급자가 예약 요청 승인 및 거절
 * **Manage Extension Requests :** 공급자가 대여기간연장 요청 승인 및 거절
+* **View Transaction History :** 사용자의 거래목록과 상세상태를 확인
 * **Confirm Pickup/Return :** 물품 수령 및 반납 상호 인증
 * **Transaction Review :** 거래 종료 후 물품 상태 및 유저 매너 평가 기록
 * **Chat & Messaging :** 거래 당사자 끼리 거래 세부 사항을 실시간으로 문의하고 답변
@@ -108,22 +109,27 @@
 | :--- | :--- |
 | **Description** | 대여 중인 사용자의 기간 연장 신청을 확인하고 처리한다. 단, 예약자가 없을 때만 승인이 가능하다. |
 
-### 11) Confirm Pickup/Return
+### 11) View Transaction History
+| **Actor** | Seller/Lender, Buyer/Borrower |
+| :--- | :--- |
+| **Description** | 본인이 참여한 과거 및 현재의 모든 매매/대여 거래 목록과 상세 상태를 확인한다. |
+
+### 12) Confirm Pickup/Return
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 대면 거래 후 물품 수령 및 반납 완료를 상호 확인하여 시스템 상태를 업데이트한다. |
 
-### 12) Transaction Review
+### 13) Transaction Review
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 거래 종료 후 상대방의 매너 및 물품 보존 상태에 대한 별점과 후기를 기록한다. |
 
-### 13) Chat & Messaging
+### 14) Chat & Messaging
 | **Actor** | Seller/Lender, Buyer/Borrower |
 | :--- | :--- |
 | **Description** | 거래 세부 사항(직거래 시간, 장소 등)을 조율하거나 물품 상태에 대해 실시간으로 문의하고 답변한다. |
 
-### 14) System Monitoring
+### 15) System Monitoring
 | **Actor** | Admin |
 | :--- | :--- |
 | **Description** | 전체 거래 데이터를 감시하여 부정 거래나 부적절한 게시물 및 채팅을 관리한다. |
@@ -210,7 +216,15 @@
   <tr><td><b>Goals</b></td><td>대여한 물품에 대한 기간연장을 통해 자원의 활용성을 높인다.</td></tr>
 </table>
 
-### 11) Confirm Pickup/Return
+### 11) View Transaction History
+<table>
+  <tr><td><b>Purpose</b></td><td>사용자가 참여한 모든 매매 및 대여 거래의 현재 진행 상태와 과거 이력을 관리하고 확인할 수 있는 환경을 제공하기 위함.</td></tr>
+  <tr><td><b>Approach</b></td><td>마이페이지' 또는 '거래 관리' 메뉴를 통해 전체 거래 리스트를 제공합니다. 사용자가 정보를 쉽게 찾을 수 있도록 '진행 중인 거래'와 '종료된 거래'를 구분하는 필터링 기능을 지원하며, 각 내역을 클릭하면 상세 페이지로 이동하여 리뷰 작성이나 연장 신청 같은 후속 액션을 연결합니다.</td></tr>
+  <tr><td><b>Dynamics</b></td><td>사용자가 자신의 자산 활용 현황을 파악하고 싶을 때나, 현재 진행 중인 거래에 대해 수령/반납 확인 등 특정 절차를 밟기 위해 거래 관리 메뉴에 진입하는 시점에 작동합니다.</td></tr>
+  <tr><td><b>Goals</b></td><td>사용자에게 거래 데이터의 가시성을 제공하여 자산 관리의 편의성을 높입니다.</td></tr>
+</table>
+
+### 12) Confirm Pickup/Return
 <table>
   <tr><td><b>Purpose</b></td><td>실제 오프라인 거래의 성사 여부를 시스템에 최종적으로 동기화함. 이후 해당 물품에 예약자가 있다면 Auto-Succession을 통해서 예약자에게 해당 물품이 대여된다.</td></tr>
   <tr><td><b>Approach</b></td><td>상호 확정 버튼 클릭 혹은 디지털 인증 수단을 통해 대면 거래 완료를 증명함.</td></tr>
@@ -218,7 +232,7 @@
   <tr><td><b>Goals</b></td><td>거래 데이터 정합성 유지 및 물품 소유권/사용권의 명확한 이전 기록.</td></tr>
 </table>
 
-### 12) Transaction Review
+### 13) Transaction Review
 <table>
   <tr><td><b>Purpose</b></td><td>거래 경험을 공개하여 사용자 간의 신뢰도를 높이고 커뮤니티 신뢰성을 유지함.</td></tr>
   <tr><td><b>Approach</b></td><td>거래 종료 후 상대방의 매너 및 자산 보존 상태를 별점과 후기로 기록함.</td></tr>
@@ -226,7 +240,7 @@
   <tr><td><b>Goals</b></td><td>불량 사용자 필터링 및 건강한 캠퍼스 공유 문화 정착.</td></tr>
 </table>
 
-### 13) Chat & Messaging
+### 14) Chat & Messaging
 <table>
   <tr><td><b>Purpose</b></td><td>개인 연락처 노출 없이 안전하게 거래 세부 사항을 조율하고, 물품에 대한 추가 정보를 교환하여 거래 성사율을 높임.</td></tr>
   <tr><td><b>Approach</b></td><td>게시물에 있는 채팅버튼을 활성화 시에 1:1 실시간 채팅 인터페이스를 통해 텍스트 및 이미지 데이터를 주고받음.</td></tr>
@@ -234,7 +248,7 @@
   <tr><td><b>Goals</b></td><td>플랫폼 내 사용자끼리의 커뮤니케이션 채널 확보.</td></tr>
 </table>
 
-### 14) System Monitoring
+### 15) System Monitoring
 <table>
   <tr><td><b>Purpose</b></td><td>플랫폼 전체의 안정성을 유지하고 부정 거래나 부적절한 게시물을 관리함.</td></tr>
   <tr><td><b>Approach</b></td><td>관리자 전용 대시보드를 통해 시스템 로그 및 거래 데이터를 감시함.</td></tr>
