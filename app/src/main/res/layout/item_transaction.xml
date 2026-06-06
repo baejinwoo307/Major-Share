@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTransRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 역할: 구매자"
+            android:textStyle="bold"
+            android:textColor="#3F51B5"/>
+
+        <TextView
+            android:id="@+id/tvTransTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="물품 제목"
+            android:textSize="18sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvTransStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상태: 승인대기"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutActionButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <!-- 공급자용 버튼 -->
+            <Button
+                android:id="@+id/btnApprove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="승인"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnReject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="거절"
+                android:visibility="gone"/>
+
+            <!-- 수요자용 버튼 -->
+            <Button
+                android:id="@+id/btnPickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수령 확정"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반납"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnExtend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기간 연장"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="채팅하기"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <!-- 연장 신청 관리용 레이아웃 (공급자용) -->
+        <LinearLayout
+            android:id="@+id/layoutExtensionReq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:background="#FFF3E0"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvExtensionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="연장 요청: 7일 (사유)"
+                android:textColor="#E65100"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+                
+                <Button
+                    android:id="@+id/btnExtApprove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연장 승인"
+                    android:layout_marginEnd="8dp"/>
+                    
+                <Button
+                    android:id="@+id/btnExtReject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="거절"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

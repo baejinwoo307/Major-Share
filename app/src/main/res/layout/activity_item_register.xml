@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="새 물품 등록"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/etRegisterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="책 제목을 입력하세요"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerRegisterCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/rgTransactionType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rbSell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="판매"
+            android:checked="true"
+            android:layout_marginEnd="16dp"/>
+
+        <RadioButton
+            android:id="@+id/rbRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="대여"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etRegisterPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="가격을 입력하세요 (원)"
+        android:inputType="number"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnSubmitItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="등록 완료"/>
+
+</LinearLayout>

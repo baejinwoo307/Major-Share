@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Major Share</string>
+    <string name="title_major_share">Major Share</string>
+    <string name="hint_user_id">학번 (ID)</string>
+    <string name="hint_password">비밀번호</string>
+    <string name="btn_login">로그인</string>
+    <string name="btn_move_to_register">회원가입하러 가기</string>
+</resources>
