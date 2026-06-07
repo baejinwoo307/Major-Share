@@ -37,11 +37,20 @@ public class AdminItemAdapter extends RecyclerView.Adapter<AdminItemAdapter.Admi
         holder.tvAdminItemOwner.setText("작성자: " + item.getOwner().getUserId());
         holder.tvAdminItemStatus.setText("상태: " + item.getStatus());
 
+        holder.btnBlind.setText("게시글 삭제");
         holder.btnBlind.setOnClickListener(v -> {
-            ItemRepository.getInstance().updateItemStatus(v.getContext(), item.getItemId(), "블라인드(관리자)");
-            item.changeStatus("블라인드(관리자)");
-            notifyDataSetChanged();
-            Toast.makeText(v.getContext(), "해당 게시글이 블라인드 처리되었습니다.", Toast.LENGTH_SHORT).show();
+            new android.app.AlertDialog.Builder(v.getContext())
+                .setTitle("게시글 삭제")
+                .setMessage("부적절한 게시글로 판단되어 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.")
+                .setPositiveButton("삭제", (dialog, which) -> {
+                    ItemRepository.getInstance().deleteItem(v.getContext(), item.getItemId());
+                    itemList.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, itemList.size());
+                    Toast.makeText(v.getContext(), "게시글이 영구 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                })
+                .setNegativeButton("취소", null)
+                .show();
         });
     }
 

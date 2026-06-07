@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 public class ChatMessage {
     private Long messageId;
     private String content;
+    private String imageData;
+    private boolean isRead;
     private LocalDateTime sendTime;
     private ChatRoom room;
     private User sender;
@@ -16,6 +18,22 @@ public class ChatMessage {
         this.sender = sender;
         this.content = content;
         this.sendTime = LocalDateTime.now();
+    }
+
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
+    }
+
+    public String getImageData() {
+        return imageData;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
+    }
+
+    public boolean isRead() {
+        return isRead;
     }
 
     public ChatMessageDTO getMessageDetailResponse() {

@@ -1,33 +1,26 @@
 package com.majorshare.core.domain;
 
-import com.majorshare.core.dto.ReviewDetailDTO;
-
 public class Review {
     private Long reviewId;
-    private int rating;
+    private String targetUserId;
+    private String writerUserId;
+    private float score;
     private String content;
-    private Transaction targetTransaction;
-    private User reviewer;
-    private User targetUser;
+    private String date;
 
-    public Review(Transaction targetTransaction, User reviewer, User targetUser, int rating, String content) {
-        this.targetTransaction = targetTransaction;
-        this.reviewer = reviewer;
-        this.targetUser = targetUser;
-        this.rating = rating;
+    public Review(Long reviewId, String targetUserId, String writerUserId, float score, String content, String date) {
+        this.reviewId = reviewId;
+        this.targetUserId = targetUserId;
+        this.writerUserId = writerUserId;
+        this.score = score;
         this.content = content;
-
-        this.targetUser.updateScore(this.rating);
-    }
-
-    public ReviewDetailDTO getReviewDetailResponse() {
-        return new ReviewDetailDTO(this.reviewId, this.rating, this.content);
+        this.date = date;
     }
 
     public Long getReviewId() { return reviewId; }
-    public int getRating() { return rating; }
+    public String getTargetUserId() { return targetUserId; }
+    public String getWriterUserId() { return writerUserId; }
+    public float getScore() { return score; }
     public String getContent() { return content; }
-    public Transaction getTargetTransaction() { return targetTransaction; }
-    public User getReviewer() { return reviewer; }
-    public User getTargetUser() { return targetUser; }
+    public String getDate() { return date; }
 }

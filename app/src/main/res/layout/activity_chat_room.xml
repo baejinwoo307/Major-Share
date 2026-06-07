@@ -34,6 +34,14 @@
         android:padding="8dp"
         android:elevation="4dp">
 
+        <ImageButton
+            android:id="@+id/btnAttachImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside" />
+
         <EditText
             android:id="@+id/etMessage"
             android:layout_width="0dp"

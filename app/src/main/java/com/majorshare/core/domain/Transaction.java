@@ -27,7 +27,10 @@ public class Transaction {
     public void approveRequest() {
         this.stage = "승인됨";
         this.transactionDate = LocalDate.now();
-        this.subjectItem.changeStatus("거래중");
+    }
+
+    public void markAsDelivered() {
+        this.stage = "전달중";
     }
 
     public void rejectRequest() {
@@ -40,9 +43,23 @@ public class Transaction {
             this.subjectItem.changeStatus("판매완료");
         } else if (this.transactionType.equals("대여")) {
             this.stage = "수령완료_대여중";
-            this.returnDueDate = LocalDateTime.now().plusDays(this.subjectItem.getMaxRentDays());
+            this.subjectItem.changeStatus("대여중");
+            try {
+                String endDateStr = this.subjectItem.getRentalEndDate();
+                if (endDateStr != null && !endDateStr.isEmpty()) {
+                    this.returnDueDate = java.time.LocalDate.parse(endDateStr).atStartOfDay();
+                } else {
+                    this.returnDueDate = LocalDateTime.now().plusDays(7);
+                }
+            } catch (Exception e) {
+                this.returnDueDate = LocalDateTime.now().plusDays(7);
+            }
         }
         return true;
+    }
+
+    public void markAsReturned() {
+        this.stage = "반납중";
     }
 
     public boolean confirmReturn() {
@@ -52,6 +69,11 @@ public class Transaction {
             return true;
         }
         return false;
+    }
+
+    public boolean isOverdue() {
+        if (this.returnDueDate == null) return false;
+        return LocalDateTime.now().isAfter(this.returnDueDate);
     }
 
     public void extendReturnDueDate(int days) {
@@ -76,8 +98,8 @@ public class Transaction {
 
     public List<Transaction> getHistoryByUser(android.content.Context context, User user) {
         return TransactionRepository.getInstance().getTransactions(context).stream()
-                .filter(t -> t.getBuyer().getUserId().equals(user.getUserId()) ||
-                             t.getSubjectItem().getOwner().getUserId().equals(user.getUserId()))
+                .filter(t -> t.getBuyer().getUserId().trim().equalsIgnoreCase(user.getUserId().trim()) ||
+                             t.getSubjectItem().getOwner().getUserId().trim().equalsIgnoreCase(user.getUserId().trim()))
                 .collect(Collectors.toList());
     }
 

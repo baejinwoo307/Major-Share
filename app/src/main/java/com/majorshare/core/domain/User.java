@@ -21,6 +21,10 @@ public class User {
     }
 
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void updatePassword(String password) {
         this.password = password;
     }
@@ -31,6 +35,10 @@ public class User {
 
     public void changeAccountStatus(String status) {
         this.accountStatus = status;
+    }
+
+    public void setMannerScore(float score) {
+        this.mannerScore = score;
     }
 
     public void updateScore(int rating) {

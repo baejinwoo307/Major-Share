@@ -10,6 +10,17 @@ public class Notification {
     private User receiver;
 
 
+    public Notification(String type, String content, User receiver) {
+        this.type = type;
+        this.content = content;
+        this.receiver = receiver;
+        this.isRead = false;
+    }
+
+    public void setNotificationId(Long notificationId) {
+        this.notificationId = notificationId;
+    }
+
     public void sendPushAlert(User receiver, String type, String content) {
         this.receiver = receiver;
         this.type = type;

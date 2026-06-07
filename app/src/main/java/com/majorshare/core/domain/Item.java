@@ -12,19 +12,21 @@ public class Item {
     private String category;
     private String transactionType;
     private String status;
-    private int maxRentDays;
+    private String rentalEndDate;
     private int price;
+    private int maxRentDays = 7;
     private User owner;
+    private String imageBase64;
 
-    public Item(String title, String category, String transactionType, int price, int maxRentDays, User owner) {
+    public Item(String title, String category, String transactionType, int price, String rentalEndDate, User owner) {
         this.title = title;
         this.category = category;
-        this.transactionType = transactionType;
+        this.transactionType = transactionType != null ? transactionType.trim() : "";
         this.price = price;
-        this.maxRentDays = maxRentDays;
+        this.rentalEndDate = rentalEndDate;
         this.owner = owner;
         // 거래 타입에 따른 초기 상태 설정 보정
-        if ("매매".equals(transactionType) || "판매".equals(transactionType)) {
+        if ("매매".equals(this.transactionType) || "판매".equals(this.transactionType)) {
             this.status = "판매중";
             this.transactionType = "매매"; // 타입 통일
         } else {
@@ -56,7 +58,7 @@ public class Item {
     }
 
     public ItemDetailDTO getItemDetailResponse() {
-        return new ItemDetailDTO(this.itemId, this.title, this.category, this.transactionType, this.status, this.maxRentDays, this.price, this.owner.getUserId());
+        return new ItemDetailDTO(this.itemId, this.title, this.category, this.transactionType, this.status, this.rentalEndDate, this.price, this.owner.getUserId());
     }
 
     public Long getItemId() { return itemId; }
@@ -64,7 +66,11 @@ public class Item {
     public String getCategory() { return category; }
     public String getTransactionType() { return transactionType; }
     public String getStatus() { return status; }
-    public int getMaxRentDays() { return maxRentDays; }
+    public String getRentalEndDate() { return rentalEndDate; }
     public int getPrice() { return price; }
+    public int getMaxRentDays() { return maxRentDays; }
+    public void setMaxRentDays(int days) { this.maxRentDays = days; }
     public User getOwner() { return owner; }
+    public String getImageBase64() { return imageBase64; }
+    public void setImageBase64(String imageBase64) { this.imageBase64 = imageBase64; }
 }

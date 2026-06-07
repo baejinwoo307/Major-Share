@@ -31,12 +31,27 @@
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinnerCategory"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp" />
+
+        <Spinner
+            android:id="@+id/spinnerTransType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItems"
@@ -53,12 +68,29 @@
         android:layout_marginBottom="8dp"
         android:text="새 물품 등록하기"/>
 
-    <Button
-        android:id="@+id/btnMyPage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="마이페이지 (거래 관리)"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <Button
+            android:id="@+id/btnMyPage"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="마이페이지 (거래 관리)"/>
+
+        <Button
+            android:id="@+id/btnNotifications"
+            android:layout_width="0dp"
+            android:layout_weight="1.2"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="알림"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnAdmin"

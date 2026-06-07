@@ -5,6 +5,15 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <ImageView
+        android:id="@+id/ivDetailImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:background="#EEEEEE"/>
+
     <TextView
         android:id="@+id/tvDetailTitle"
         android:layout_width="wrap_content"
@@ -28,6 +37,30 @@
         android:textColor="#0000FF"
         android:layout_marginBottom="8dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:id="@+id/tvOwnerProfile"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="#555555"/>
+        <Button
+            android:id="@+id/btnViewOwnerReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리뷰 보기"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvDetailPrice"
         android:layout_width="wrap_content"
@@ -35,6 +68,33 @@
         android:textSize="18sp"
         android:textColor="#FF0000"
         android:layout_marginBottom="32dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutOwnerActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnEditItem"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="수정"/>
+
+        <Button
+            android:id="@+id/btnDeleteItem"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#FF5252"
+            android:textColor="#FFFFFF"
+            android:text="삭제"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnRequestTransaction"

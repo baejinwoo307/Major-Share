@@ -22,18 +22,18 @@ public class TransactionRepository {
         return instance;
     }
 
-    public void addTransaction(Context context, Transaction transaction) {
+    public synchronized void addTransaction(Context context, Transaction transaction) {
         DatabaseHelper db = new DatabaseHelper(context);
         long id = db.insertTransaction(transaction);
         transaction.setTransactionId(id);
     }
 
-    public void updateTransaction(Context context, Transaction transaction) {
+    public synchronized void updateTransaction(Context context, Transaction transaction) {
         DatabaseHelper db = new DatabaseHelper(context);
         db.updateTransaction(transaction);
     }
 
-    public void addReservation(Context context, Reservation reservation) {
+    public synchronized void addReservation(Context context, Reservation reservation) {
         DatabaseHelper db = new DatabaseHelper(context);
         long id = db.insertReservation(reservation);
         reservation.setReservationId(id);
@@ -48,7 +48,14 @@ public class TransactionRepository {
         List<Transaction> all = getTransactions(context);
         List<Transaction> result = new ArrayList<>();
         for (Transaction t : all) {
-            if (t.getBuyer().getUserId().equals(userId) || t.getSubjectItem().getOwner().getUserId().equals(userId)) {
+            // Null Safety check
+            if (t.getBuyer() == null || t.getSubjectItem() == null || t.getSubjectItem().getOwner() == null) continue;
+
+            String bId = t.getBuyer().getUserId().trim();
+            String oId = t.getSubjectItem().getOwner().getUserId().trim();
+            String targetId = userId.trim();
+
+            if (bId.equalsIgnoreCase(targetId) || oId.equalsIgnoreCase(targetId)) {
                 result.add(t);
             }
         }
@@ -70,7 +77,7 @@ public class TransactionRepository {
         return false;
     }
 
-    public Reservation popNextReservation(Context context, Long itemId) {
+    public synchronized Reservation popNextReservation(Context context, Long itemId) {
         List<Reservation> all = getReservations(context);
         for (Reservation r : all) {
             if (r.getTargetItem().getItemId().equals(itemId) && r.getStatus().equals("대기")) {

@@ -40,4 +40,14 @@ public class ItemRepository {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         dbHelper.updateItemStatus(itemId, newStatus);
     }
+
+    public void updateItemDetails(Context context, Long itemId, String title, int price, String rentalEndDate) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        dbHelper.updateItemDetails(itemId, title, price, rentalEndDate);
+    }
+
+    public void deleteItem(Context context, Long itemId) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        dbHelper.deleteItem(itemId);
+    }
 }

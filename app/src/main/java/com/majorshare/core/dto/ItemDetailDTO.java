@@ -6,17 +6,17 @@ public class ItemDetailDTO {
     private String category;
     private String transactionType;
     private String status;
-    private int maxRentDays;
+    private String rentalEndDate;
     private int price;
     private String ownerId;
 
-    public ItemDetailDTO(Long itemId, String title, String category, String transactionType, String status, int maxRentDays, int price, String ownerId) {
+    public ItemDetailDTO(Long itemId, String title, String category, String transactionType, String status, String rentalEndDate, int price, String ownerId) {
         this.itemId = itemId;
         this.title = title;
         this.category = category;
         this.transactionType = transactionType;
         this.status = status;
-        this.maxRentDays = maxRentDays;
+        this.rentalEndDate = rentalEndDate;
         this.price = price;
         this.ownerId = ownerId;
     }
@@ -26,7 +26,7 @@ public class ItemDetailDTO {
     public String getCategory() { return category; }
     public String getTransactionType() { return transactionType; }
     public String getStatus() { return status; }
-    public int getMaxRentDays() { return maxRentDays; }
+    public String getRentalEndDate() { return rentalEndDate; }
     public int getPrice() { return price; }
     public String getOwnerId() { return ownerId; }
 }

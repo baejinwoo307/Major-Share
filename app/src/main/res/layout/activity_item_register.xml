@@ -56,7 +56,46 @@
         android:layout_height="wrap_content"
         android:hint="가격을 입력하세요 (원)"
         android:inputType="number"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etMaxRentDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="최대 대여 가능 일수 (예: 7)"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvRentalEndDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="대여 가능 기한 선택 (예: 2026-06-20)"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:id="@+id/ivItemPreview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:background="#EEEEEE"/>
+
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="24dp"
+        android:text="이미지 추가"
+        android:backgroundTint="#808080"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/btnSubmitItem"

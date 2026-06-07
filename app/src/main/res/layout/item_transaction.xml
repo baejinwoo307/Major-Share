@@ -36,6 +36,15 @@
             android:text="상태: 승인대기"
             android:layout_marginTop="4dp"/>
 
+        <TextView
+            android:id="@+id/tvReturnDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="반납 기한: 2026-06-20 12:00"
+            android:textColor="#D32F2F"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:id="@+id/layoutActionButtons"
             android:layout_width="match_parent"
